@@ -1,0 +1,136 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code, dfn, img, ins, kbd, q, samp, var, center, dl,
+dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead,
+tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header,
+hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, form, fieldset {
+  box-sizing: border-box;
+  display: block;
+}
+
+body, html {
+}
+
+div {
+  box-sizing: border-box;
+  display: block;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: '';
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+img {
+  vertical-align: top;
+}
+
+input,
+textarea {
+  border: 0;
+  border-radius: 0;
+  box-sizing: border-box;
+  display: block;
+  -webkit-appearance: none;
+}
+
+textarea {
+  outline: none;
+  resize: none;
+}
+
+button {
+  background: none;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+}
+
+button:focus, input:focus {
+  outline: none;
+}
+
+body {
+  background: $bg-color;
+  color: $text-base;
+  font-family: $font-base;
+  font-size: $font-size;
+  font-weight: normal;
+  height: 100%;
+  line-height: 1.75;
+  position: relative;
+  text-rendering: geometricPrecision;
+}
+
+a {
+  color: inherit;
+  outline: none;
+  text-decoration: none;
+}
+
+::selection {
+  background: rgba($accent-base, .3);
+}
+
+::-moz-selection {
+  background: rgba($accent-base, .3);
+}
+
+._g-clearfix::after {
+  clear: both;
+  content: '';
+  display: table;
+}
+
+._g-valign-inline::after {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  width: 0;
+}
+
+._g-outer-width {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: $outer-w;
+}
+
+._g-inner-padding {
+  padding-left: $inner-pd;
+  padding-right: $inner-pd;
+}
+
+._g-font-alt {
+  font-family: $font-alt;
+}
+
+._g-hidden-input {
+  -webkit-appearance: none;
+  height: 1px;
+  left: -9999px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
+  z-index: -1;
+}

@@ -1,0 +1,30 @@
+// Size
+$outer-w: 1400px;
+$inner-pd: 120px;
+
+// Colors
+$color-base: #fff;
+$accent-base: #1a8cff;
+$action-base: #f42f3e;
+$text-base: #3b4256;
+$border-base: #e6ecf2;
+$link-base: #1964b1;
+$shadow-base: #004484;
+
+$black-true: #000;
+
+// Backgrounds
+$bg-color: #fff;
+
+// Fonts
+$font-family-main: 'Open Sans';
+$font-family-alt: 'Meta';
+$font-size: 16px;
+$font-base: $font-family-main, Arial, Helvetica, sans-serif;
+$font-alt: $font-family-alt, Arial, Helvetica, sans-serif;
+
+// Media Queries
+$low-desktop: '(max-width: 1399px)';
+$tablet: '(max-width: 1023px)';
+$mobile: '(max-width: 767px)';
+$tablet-min: '(min-width: 768px)';
