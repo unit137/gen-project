@@ -101,12 +101,16 @@ a {
   display: table;
 }
 
-._g-valign-inline::after {
-  content: '';
-  display: inline-block;
-  height: 100%;
-  vertical-align: middle;
-  width: 0;
+._g-valign-inline {
+  font-size: 0;
+
+  &::after {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    width: 0;
+  }
 }
 
 ._g-outer-width {

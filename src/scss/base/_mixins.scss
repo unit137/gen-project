@@ -1,0 +1,15 @@
+//use as
+//@include placeholder {
+//  color: $faded-base;
+//  font-weight: 300;
+//  opacity: 1;
+//}
+
+@mixin placeholder {
+	::-webkit-input-placeholder {@content}
+			::-ms-input-placeholder {@content}
+			 :-ms-input-placeholder {@content}
+					 ::-moz-placeholder {@content}
+						:-moz-placeholder {@content}
+								::placeholder {@content}
+}
