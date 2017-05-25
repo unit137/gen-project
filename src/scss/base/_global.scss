@@ -50,6 +50,7 @@ textarea {
   border-radius: 0;
   box-sizing: border-box;
   display: block;
+  font-family: inherit;
   -webkit-appearance: none;
 }
 
@@ -137,4 +138,16 @@ a {
   position: absolute;
   width: 1px;
   z-index: -1;
+}
+
+._g-visible-tablet {
+  @media #{$low-desktom-min} {
+    display: none;
+  }
+}
+
+._g-visible-mobile {
+  @media #{$tablet-min} {
+    display: none;
+  }
 }

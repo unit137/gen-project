@@ -412,6 +412,7 @@ textarea {
   border-radius: 0;
   box-sizing: border-box;
   display: block;
+  font-family: inherit;
   -webkit-appearance: none; }
 
 textarea {
@@ -484,6 +485,14 @@ a {
   position: absolute;
   width: 1px;
   z-index: -1; }
+
+@media (min-width: 1025px) {
+  ._g-visible-tablet {
+    display: none; } }
+
+@media (min-width: 768px) {
+  ._g-visible-mobile {
+    display: none; } }
 
 /* Magnific Popup CSS */
 .mfp-bg {
@@ -879,6 +888,7 @@ img.mfp-img {
   .mfp-container {
     padding-left: 6px;
     padding-right: 6px; } }
+
 
 
 /*# sourceMappingURL=default.css.map */

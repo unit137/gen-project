@@ -8,7 +8,21 @@
                 return words[1 === num % 10 && 11 !== num % 100 ? 0 : 2 <= num % 10 && 4 >= num % 10 && (10 > num % 100 || 20 <= num % 100) ? 1 : 2]
             }
         },
-        textDays = plural(['день','дня','дней']); //use as textDays(parseInt(number, 10))
+        textDays = plural(['день','дня','дней']), //use for output as textDays(parseInt(number, 10))
+        getURLParameter = function (name) {
+            var pageURL = decodeURIComponent(window.location.search.substring(1)),
+                URLVariables = pageURL.split('&'),
+                parameterName,
+                i;
+
+            for (i = 0; i < URLVariables.length; i++) {
+                parameterName = URLVariables[i].split('=');
+
+                if (parameterName[0] === name) {
+                    return parameterName[1] === undefined ? true : parameterName[1];
+                }
+            }
+        }; // use as paramname = getURLParameter('paramname');
 
     $(document).ready(function() {
 
@@ -27,16 +41,16 @@
 
     var initInputInteractedClasses = function () {
         $('.js-input').each(function () {
-            $(this).parent().toggleClass('text-input_filled', $(this).val() !== '');
+            $(this).parent().toggleClass('input-text_filled', $(this).val() !== '');
         });
         $(document).on('change DOMAutoComplete keyup keydown', '.js-input', function(e) {
-            $(this).parent().toggleClass('text-input_filled', $(this).val() !== '');
+            $(this).parent().toggleClass('input-text_filled', $(this).val() !== '');
             e.stopPropagation();
         }).on('focus', '.js-input', function(e) {
-            $(this).parent().addClass('text-input_focus');
+            $(this).parent().addClass('input-text_focus');
             e.stopPropagation();
         }).on('blur', '.js-input', function(e) {
-            $(this).parent().removeClass('text-input_focus');
+            $(this).parent().removeClass('input-text_focus');
             e.stopPropagation();
         });
     };
@@ -66,6 +80,7 @@
                 initSmoothScrolling();
             } else {
                 $(window).disablescroll();
+                //todo check if smoothWheel initialized
                 $(window).smoothWheel({remove: true});
             }
             $(this).toggleClass('header__menu-toggler_active');
@@ -74,10 +89,87 @@
     };
 
     var initSmoothScrolling = function () {
+        //todo make desktop only
         $(window).smoothWheel({
             friction: 0.9,
             stepAmt: 3,
             minMovement: 0.1
+        });
+    };
+
+    // fixes nonsmooth scrolling in IEs for projects with parallax backgrounds based on fixed bg-block
+    var fixScrollForIEAndEdge = function () {
+        // replace for css.ua if used
+        var detectIE = function () {
+            var ua = window.navigator.userAgent;
+
+            var msie = ua.indexOf('MSIE ');
+            if (msie > 0) {
+                return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
+            }
+
+            var trident = ua.indexOf('Trident/');
+            if (trident > 0) {
+                var rv = ua.indexOf('rv:');
+                return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
+            }
+
+            var edge = ua.indexOf('Edge/');
+            if (edge > 0) {
+                return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
+            }
+
+            return false;
+            },
+            version = detectIE();
+
+        if (version >= 11) {
+            $('body').on('mousewheel', function () {
+                event.preventDefault();
+                var wheelDelta = event.wheelDelta;
+                var currentScrollPosition = window.pageYOffset;
+                window.scrollTo(0, currentScrollPosition - wheelDelta);
+            });
+        }
+    };
+
+    var initAnchors = function () {
+        $(document).on('click', '.js-banner-anchor', function (e) {
+            var anchor = $(this),
+                target = $(anchor.data('target'));
+            e.preventDefault();
+            $('html, body').animate({
+                scrollTop: target.offset().top
+            }, 500);
+        });
+    };
+
+    //add class .js-eq-height to parent of elements
+    var equalizeHeight = function () {
+        var elems = $('.js-eq-height');
+        elems.children().height('');
+        if ($(window).width() > 767) {
+            window.setTimeout(function () {
+                elems.each(function () {
+                    var highest = 0,
+                        container = $(this);
+                    container.children().each(function () {
+                        if($(this).height() > highest) {
+                            highest = $(this).height();
+                        }
+                    });
+                    container.children().each(function () {
+                        $(this).height(highest);
+                    });
+                });
+            }, 500);
+        }
+    };
+
+    var initGAEvents = function () {
+        $(document).on('click', '.js-ga-trigger', function () {
+            var event = $(this).data('ga');
+            ga('send', 'event', 'click', event);
         });
     };
 
