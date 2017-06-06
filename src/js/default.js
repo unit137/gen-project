@@ -55,12 +55,6 @@
         });
     };
 
-    var initPhoneMask = function () {
-        $('.js-phone-mask').each(function () {
-            $(this).mask('+7 (999) 999 99 99', {autoclear: false});
-        });
-    };
-
     var initAccordions = function () {
         $(document).on('click', '.js-accordion', function () {
             if ($(this).parent().hasClass('accordion_opened')) {
@@ -75,62 +69,9 @@
     var initMenuToggler = function() {
         $(document).on('click', '.js-menu-toggler', function (e) {
             e.preventDefault();
-            if ($(this).hasClass('header__menu-toggler_active')) {
-                $(window).disablescroll('undo');
-                initSmoothScrolling();
-            } else {
-                $(window).disablescroll();
-                //todo check if smoothWheel initialized
-                $(window).smoothWheel({remove: true});
-            }
             $(this).toggleClass('header__menu-toggler_active');
             $('.js-menu').toggleClass('header__menu_visible');
         });
-    };
-
-    var initSmoothScrolling = function () {
-        //todo make desktop only
-        $(window).smoothWheel({
-            friction: 0.9,
-            stepAmt: 3,
-            minMovement: 0.1
-        });
-    };
-
-    // fixes nonsmooth scrolling in IEs for projects with parallax backgrounds based on fixed bg-block
-    var fixScrollForIEAndEdge = function () {
-        // replace for css.ua if used
-        var detectIE = function () {
-            var ua = window.navigator.userAgent;
-
-            var msie = ua.indexOf('MSIE ');
-            if (msie > 0) {
-                return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
-            }
-
-            var trident = ua.indexOf('Trident/');
-            if (trident > 0) {
-                var rv = ua.indexOf('rv:');
-                return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
-            }
-
-            var edge = ua.indexOf('Edge/');
-            if (edge > 0) {
-                return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
-            }
-
-            return false;
-            },
-            version = detectIE();
-
-        if (version >= 11) {
-            $('body').on('mousewheel', function () {
-                event.preventDefault();
-                var wheelDelta = event.wheelDelta;
-                var currentScrollPosition = window.pageYOffset;
-                window.scrollTo(0, currentScrollPosition - wheelDelta);
-            });
-        }
     };
 
     var initAnchors = function () {
@@ -164,13 +105,6 @@
                 });
             }, 500);
         }
-    };
-
-    var initGAEvents = function () {
-        $(document).on('click', '.js-ga-trigger', function () {
-            var event = $(this).data('ga');
-            ga('send', 'event', 'click', event);
-        });
     };
 
 }(jQuery));
