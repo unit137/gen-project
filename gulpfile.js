@@ -97,7 +97,7 @@ gulp.task('watch', ['css', 'js', 'browser-sync'], function() {
         browserSync.reload();
     });
 
-    watch('./src/*.html', function() {
+    watch('./src/**/*.html', function() {
         browserSync.reload();
     });
 });

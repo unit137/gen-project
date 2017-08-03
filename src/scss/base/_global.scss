@@ -44,14 +44,24 @@ img {
   vertical-align: top;
 }
 
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+label {
+  -webkit-tap-highlight-color: rgba($black-true, 0);
+}
+
 input,
 textarea {
+  -webkit-appearance: none;
   border: 0;
   border-radius: 0;
+  box-shadow: none;
   box-sizing: border-box;
   display: block;
-  font-family: inherit;
-  -webkit-appearance: none;
 }
 
 textarea {
@@ -66,18 +76,34 @@ button {
   padding: 0;
 }
 
+button, input {
+  -webkit-tap-highlight-color: rgba($black-true, 0);
+}
+
 button:focus, input:focus {
   outline: none;
 }
 
+select {
+  &::-ms-value {
+    background: none;
+    color: $text-base;
+    overflow: hidden;
+  }
+}
+
+abbr[title], acronym[title] {
+  text-decoration: none;
+}
+
 body {
-  background: $bg-color;
+  background: $bg-main;
   color: $text-base;
   font-family: $font-base;
   font-size: $font-size;
   font-weight: normal;
   height: 100%;
-  line-height: 1.75;
+  line-height: 1.4;
   position: relative;
   text-rendering: geometricPrecision;
 }
@@ -85,6 +111,7 @@ body {
 a {
   color: inherit;
   outline: none;
+  -webkit-tap-highlight-color: rgba($black-true, 0);
   text-decoration: none;
 }
 
@@ -123,6 +150,21 @@ a {
 ._g-inner-padding {
   padding-left: $inner-pd;
   padding-right: $inner-pd;
+
+  @media #{$low-desktop} {
+    padding-left: $inner-pd-ld;
+    padding-right: $inner-pd-ld;
+  }
+
+  @media #{$tablet} {
+    padding-left: $inner-pd-tab;
+    padding-right: $inner-pd-tab;
+  }
+
+  @media #{$mobile} {
+    padding-left: $inner-pd-mob;
+    padding-right: $inner-pd-mob;
+  }
 }
 
 ._g-font-alt {
@@ -140,14 +182,77 @@ a {
   z-index: -1;
 }
 
+._g-alt-bg {
+  background-color: $bg-alt;
+}
+
+._g-link-ex {
+  border-bottom: 1px solid $link-base;
+  color: $link-base;
+  cursor: pointer;
+}
+
+._g-link-anchor {
+  border-bottom: 1px dashed $link-base;
+  color: $link-base;
+  cursor: pointer;
+}
+
+._g-link-noul {
+  color: $link-base;
+  cursor: pointer;
+}
+
+._g-iframe {
+
+  @media #{$mobile} {
+    height: 0;
+    position: relative;
+
+    iframe {
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+  }
+
+  &._g-iframe_16x9 {
+
+    @media #{$mobile} {
+      padding-bottom: 56.25%;
+    }
+  }
+
+  &._g-iframe_4x3 {
+
+    @media #{$mobile} {
+      padding-bottom: 75%;
+    }
+  }
+}
+
 ._g-visible-tablet {
-  @media #{$low-desktom-min} {
+  @media #{$low-desktop-min} {
     display: none;
   }
 }
 
 ._g-visible-mobile {
   @media #{$tablet-min} {
+    display: none;
+  }
+}
+
+._g-hidden-tablet {
+  @media #{$tablet} {
+    display: none;
+  }
+}
+
+._g-hidden-mobile {
+  @media #{$mobile} {
     display: none;
   }
 }

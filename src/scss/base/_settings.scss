@@ -1,6 +1,9 @@
 // Size
 $outer-w: 1400px;
 $inner-pd: 120px;
+$inner-pd-ld: 40px;
+$inner-pd-tab: 25px;
+$inner-pd-mob: 15px;
 
 // Colors
 $color-base: #fff;
@@ -14,7 +17,9 @@ $shadow-base: #004484;
 $black-true: #000;
 
 // Backgrounds
-$bg-color: #fff;
+$bg-main: #fff;
+$bg-alt: #f0f0f0;
+$bg-footer: #ccc;
 
 // Fonts
 $font-family-main: 'Open Sans';
@@ -24,8 +29,14 @@ $font-base: $font-family-main, Arial, Helvetica, sans-serif;
 $font-alt: $font-family-alt, Arial, Helvetica, sans-serif;
 
 // Media Queries
-$low-desktop: '(max-width: 1300px)';
+$low-desktop: '(max-width: 1439px)';
 $tablet: '(max-width: 1024px)';
 $mobile: '(max-width: 767px)';
-$low-desktom-min: '(min-width: 1025px)';
+
+$wide-desktop: '(min-width: 1600px)';
+$desktop-min: '(min-width: 1440px)';
+$low-desktop-min: '(min-width: 1024px)';
 $tablet-min: '(min-width: 768px)';
+
+$tablet-landscape: '(max-width: 1024px) and (orientation: landscape)';
+$mobile-landscape: '(max-width: 767px) and (orientation: landscape)';
