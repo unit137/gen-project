@@ -16,6 +16,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 }
 
 body, html {
+  -webkit-text-size-adjust: 100%;
 }
 
 div {
@@ -55,7 +56,8 @@ label {
 }
 
 input,
-textarea {
+textarea,
+button {
   -webkit-appearance: none;
   border: 0;
   border-radius: 0;
