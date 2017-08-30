@@ -87,6 +87,8 @@ button:focus, input:focus {
 }
 
 select {
+  outline: none;
+
   &::-ms-value {
     background: none;
     color: $text-base;
