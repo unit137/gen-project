@@ -6,7 +6,11 @@ $inner-pd-tab: 25px;
 $inner-pd-mob: 15px;
 
 // Colors
-$color-base: #fff;
+$black-true: #000;
+$white-true: #fff;
+
+// UI Colors
+$color-base: $white-true;
 $accent-base: #1a8cff;
 $action-base: #f42f3e;
 $text-base: #3b4256;
@@ -14,10 +18,8 @@ $border-base: #e6ecf2;
 $link-base: #1964b1;
 $shadow-base: #004484;
 
-$black-true: #000;
-
 // Backgrounds
-$bg-main: #fff;
+$bg-main: $white-true;
 $bg-alt: #f0f0f0;
 $bg-footer: #ccc;
 
