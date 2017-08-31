@@ -19,9 +19,10 @@ body, html {
   -webkit-text-size-adjust: 100%;
 }
 
-div {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
-  display: block;
 }
 
 ol, ul {
