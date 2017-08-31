@@ -5,7 +5,7 @@
 	<h3>Pages</h3>
 	<ul>
 		<?php
-			foreach (glob("dist/*.html") as $page) {
+			foreach (glob("dist/html/*.html") as $page) {
 				echo "<li><a href='$page'>$page</a></li>";
 			}
 		?>

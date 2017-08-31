@@ -42,9 +42,7 @@ gulp.task('css', function(){
 
 gulp.task('js', function() {
     return gulp.src([
-        './src/js/vendor/jquery-2.2.4.min.js',
-        './src/js/vendor/owl.carousel.min.js',
-        './src/js/vendor/jquery.owl-filter.custom.js',
+        './src/js/vendor/jquery-3.2.1.min.js',
         './src/js/vendor/*.js'
     ])
         .pipe(plumber({
@@ -127,11 +125,11 @@ gulp.task('build', ['clean', 'css', 'js', 'img'], function() {
         fonts = gulp.src(['./src/fonts/**/*', '!./src/fonts/selection.json'])
             .pipe(gulp.dest('./dist/fonts')),
 
-        favicon = gulp.src('./src/*.ico')
+        favicon = gulp.src('./src/html/*.ico')
             .pipe(gulp.dest('./dist')),
 
-        html = gulp.src('./src/*.html')
-            .pipe(gulp.dest('./dist'));
+        html = gulp.src('./src/html/*.html')
+            .pipe(gulp.dest('./dist/html'));
 });
 
 gulp.task('default', ['watch']);
