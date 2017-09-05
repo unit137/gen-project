@@ -89,11 +89,11 @@ button:focus, input:focus {
 
 select {
   outline: none;
+  overflow: hidden;
 
   &::-ms-value {
     background: none;
     color: $text-base;
-    overflow: hidden;
   }
 }
 
