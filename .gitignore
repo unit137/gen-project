@@ -1,6 +1,8 @@
-.idea
-node_modules
-._.*
-._*
-.DS_Store
-dist
+/.idea
+/**/node_modules
+/**/*.css.map
+/**/*.js.map
+/**/._.*
+/**/._*
+/**/.DS_Store
+/**/dist/
