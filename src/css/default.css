@@ -501,11 +501,11 @@ a {
 ._g-inner-padding {
   padding-left: 120px;
   padding-right: 120px; }
-  @media (max-width: 1439px) {
+  @media (min-width: 1024px) and (max-width: 1339px) {
     ._g-inner-padding {
       padding-left: 40px;
       padding-right: 40px; } }
-  @media (max-width: 1024px) {
+  @media (min-width: 768px) and (max-width: 1023px) {
     ._g-inner-padding {
       padding-left: 25px;
       padding-right: 25px; } }
@@ -571,7 +571,7 @@ a {
   ._g-visible-mobile {
     display: none; } }
 
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   ._g-hidden-tablet {
     display: none; } }
 

@@ -1,15 +1,75 @@
-//use inside element as
-//@include placeholder {
-//  color: $faded-base;
-//  font-weight: 300;
-//  opacity: 1;
-//}
+@import 'settings';
 
 @mixin placeholder {
-	::-webkit-input-placeholder {@content}
-			::-ms-input-placeholder {@content}
-			 :-ms-input-placeholder {@content}
-					 ::-moz-placeholder {@content}
-						:-moz-placeholder {@content}
-								::placeholder {@content}
+	::-webkit-input-placeholder {@content} //use inside input-container element as
+			::-ms-input-placeholder {@content} //@include placeholder {
+			 :-ms-input-placeholder {@content} //  color: $faded-base;
+					 ::-moz-placeholder {@content} //  font-weight: 300;
+						:-moz-placeholder {@content} //  opacity: 1;
+								::placeholder {@content} //}
+}
+
+@mixin round($size) {
+  width: $size;
+  height: $size;
+  border-radius: 50%;
+}
+
+@mixin font-fix() {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin wide-desktop-min {
+  @media (min-width: #{$wide-desktop-min}) {
+    @content;
+  }
+}
+
+@mixin desktop-min {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
+
+@mixin low-desktop {
+  @media (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin low-desktop-only {
+  @media (min-width: #{$low-desktop-width}) and (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin low-desktop-min {
+  @media (min-width: #{$low-desktop-width}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: #{$low-desktop-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet-only {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$low-desktop-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet-min {
+  @media (min-width: #{$tablet-width}) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: #{$tablet-width - 1}) {
+    @content;
+  }
 }

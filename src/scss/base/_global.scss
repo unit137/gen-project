@@ -158,17 +158,17 @@ a {
   padding-left: $inner-pd;
   padding-right: $inner-pd;
 
-  @media #{$low-desktop} {
+  @include low-desktop-only {
     padding-left: $inner-pd-ld;
     padding-right: $inner-pd-ld;
   }
 
-  @media #{$tablet} {
+  @include tablet-only {
     padding-left: $inner-pd-tab;
     padding-right: $inner-pd-tab;
   }
 
-  @media #{$mobile} {
+  @include mobile {
     padding-left: $inner-pd-mob;
     padding-right: $inner-pd-mob;
   }
@@ -212,7 +212,7 @@ a {
 
 ._g-iframe {
 
-  @media #{$mobile} {
+  @include mobile {
     height: 0;
     position: relative;
 
@@ -227,39 +227,39 @@ a {
 
   &._g-iframe_16x9 {
 
-    @media #{$mobile} {
+    @include mobile {
       padding-bottom: 56.25%;
     }
   }
 
   &._g-iframe_4x3 {
 
-    @media #{$mobile} {
+    @include mobile {
       padding-bottom: 75%;
     }
   }
 }
 
 ._g-visible-tablet {
-  @media #{$low-desktop-min} {
+  @include low-desktop-min {
     display: none;
   }
 }
 
 ._g-visible-mobile {
-  @media #{$tablet-min} {
+  @include tablet-min {
     display: none;
   }
 }
 
 ._g-hidden-tablet {
-  @media #{$tablet} {
+  @include tablet {
     display: none;
   }
 }
 
 ._g-hidden-mobile {
-  @media #{$mobile} {
+  @include mobile {
     display: none;
   }
 }

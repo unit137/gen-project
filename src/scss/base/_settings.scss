@@ -30,13 +30,18 @@ $font-size: 16px;
 $font-base: $font-family-main, Arial, Helvetica, sans-serif;
 $font-alt: $font-family-alt, Arial, Helvetica, sans-serif;
 
+// Screen sizes
+$desktop-width: 1340px;
+$low-desktop-width: 1024px;
+$tablet-width: 768px;
+
 // Media Queries
-$low-desktop: '(max-width: 1439px)';
+$low-desktop: '(max-width: 1339px)';
 $tablet: '(max-width: 1024px)';
 $mobile: '(max-width: 767px)';
 
-$wide-desktop: '(min-width: 1600px)';
-$desktop-min: '(min-width: 1440px)';
+$wide-desktop-min: '(min-width: 1600px)';
+$desktop-min: '(min-width: 1340px)';
 $low-desktop-min: '(min-width: 1024px)';
 $tablet-min: '(min-width: 768px)';
 
