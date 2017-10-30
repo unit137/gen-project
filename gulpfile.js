@@ -103,7 +103,7 @@ gulp.task('watch', ['css', 'js', 'browser-sync'], function() {
 gulp.task('build', ['clean', 'css', 'js', 'img'], function() {
     var css = gulp.src('./src/css/*.css')
             .pipe(autoprefixer({
-                browsers: ['last 5 versions', '> 0.1%'],
+                browsers: ['last 10 versions'],
                 cascade: false
             }))
             .pipe(cleanCss({
@@ -130,6 +130,8 @@ gulp.task('build', ['clean', 'css', 'js', 'img'], function() {
 
         html = gulp.src('./src/html/*.html')
             .pipe(gulp.dest('./dist/html'));
+
+    return [css, js, fonts, favicon, html]
 });
 
 gulp.task('default', ['watch']);

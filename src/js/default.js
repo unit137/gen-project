@@ -60,14 +60,14 @@
 
     });
 
-    $(window).resize(function(){
+    $(window).on('resize', function () {
         if ($(window).width() !== windowWidth) {
             windowWidth = $(window).width();
 
         }
     });
 
-    $(window).load(function(){
+    $(window).on('load', function () {
 
     });
 

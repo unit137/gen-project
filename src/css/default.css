@@ -386,9 +386,13 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   box-sizing: border-box;
   display: block; }
 
-div {
-  box-sizing: border-box;
-  display: block; }
+body, html {
+  -webkit-text-size-adjust: 100%; }
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box; }
 
 ol, ul {
   list-style: none; }
@@ -415,12 +419,14 @@ label {
   -webkit-tap-highlight-color: transparent; }
 
 input,
-textarea {
+textarea,
+button {
   -webkit-appearance: none;
   border: 0;
   border-radius: 0;
   box-shadow: none;
   box-sizing: border-box;
+  color: inherit;
   display: block; }
 
 textarea {
@@ -431,6 +437,7 @@ button {
   background: none;
   border: 0;
   border-radius: 0;
+  cursor: pointer;
   padding: 0; }
 
 button, input {
@@ -439,10 +446,12 @@ button, input {
 button:focus, input:focus {
   outline: none; }
 
-select::-ms-value {
-  background: none;
-  color: #3b4256;
+select {
+  outline: none;
   overflow: hidden; }
+  select::-ms-value {
+    background: none;
+    color: #3b4256; }
 
 abbr[title], acronym[title] {
   text-decoration: none; }
