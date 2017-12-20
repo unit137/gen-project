@@ -1,9 +1,5 @@
 {
-  "name": "gen-project",
-  "version": "1.0.0",
-  "description": "",
-  "author": "Unit",
-  "license": "ISC",
+  "name": "generic-project",
   "devDependencies": {
     "browser-sync": "^2.21.0",
     "del": "^3.0.0",
