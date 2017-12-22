@@ -392,7 +392,9 @@ body, html {
 *,
 *::before,
 *::after {
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
 
 ol, ul {
   list-style: none; }
@@ -425,7 +427,6 @@ button {
   border: 0;
   border-radius: 0;
   box-shadow: none;
-  box-sizing: border-box;
   color: inherit;
   display: block; }
 
@@ -435,8 +436,6 @@ textarea {
 
 button {
   background: none;
-  border: 0;
-  border-radius: 0;
   cursor: pointer;
   padding: 0; }
 
