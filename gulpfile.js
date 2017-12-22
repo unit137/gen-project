@@ -42,8 +42,7 @@ gulp.task('css', function(){
 
 gulp.task('js', function() {
     return gulp.src([
-        './src/js/vendor/jquery-3.2.1.min.js',
-        './src/js/vendor/*.js'
+        './src/js/modules/*.js'
     ])
         .pipe(plumber({
             errorHandler: function (error) {
@@ -52,7 +51,7 @@ gulp.task('js', function() {
             }
         }))
         .pipe(sourcemaps.init())
-        .pipe(concat('vendor.js'))
+        .pipe(concat('default.js'))
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('./src/js'));
 });
@@ -108,6 +107,10 @@ gulp.task('watch', ['css', 'vendor-js', 'browser-sync'], function() {
         gulp.start('vendor-js');
     });
 
+    watch('./src/js/modules/*.js', function() {
+        gulp.start('js');
+    });
+
     watch('./src/js/*.js', function() {
         browserSync.reload();
     });
@@ -117,7 +120,7 @@ gulp.task('watch', ['css', 'vendor-js', 'browser-sync'], function() {
     });
 });
 
-gulp.task('build', ['clean', 'css', 'vendor-js', 'img'], function() {
+gulp.task('build', ['clean', 'css', 'js', 'vendor-js', 'img'], function() {
     var css = gulp.src('./src/css/*.css')
             .pipe(autoprefixer({
                 browsers: ['last 10 versions'],
