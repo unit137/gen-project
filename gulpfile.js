@@ -12,12 +12,13 @@ var gulp = require('gulp'),
     jpegrecompress = require('imagemin-jpeg-recompress'),
     pngquant = require('imagemin-pngquant'),
     plumber = require('gulp-plumber'),
-    watch = require('gulp-watch');
+    watch = require('gulp-watch'),
+    wrap = require("gulp-wrap-js");
 
 gulp.task('browser-sync', function() {
     browserSync.init({
         server: {
-            baseDir: "./src"
+            baseDir: './src'
         },
         open: false,
         notify: false
@@ -42,7 +43,9 @@ gulp.task('css', function(){
 
 gulp.task('js', function() {
     return gulp.src([
-        './src/js/modules/*.js'
+        './src/sjs/modules/global.js',
+        './src/sjs/modules/*.js',
+        './src/sjs/init.js'
     ])
         .pipe(plumber({
             errorHandler: function (error) {
@@ -58,8 +61,8 @@ gulp.task('js', function() {
 
 gulp.task('vendor-js', function() {
     return gulp.src([
-        './src/js/vendor/jquery-3.2.1.min.js',
-        './src/js/vendor/*.js'
+        './src/sjs/vendor/jquery-3.2.1.min.js',
+        './src/sjs/vendor/*.js'
     ])
         .pipe(plumber({
             errorHandler: function (error) {
@@ -98,16 +101,16 @@ gulp.task('clear-cache', function () {
     return cache.clearAll();
 });
 
-gulp.task('watch', ['css', 'vendor-js', 'browser-sync'], function() {
+gulp.task('watch', ['css', 'js', 'vendor-js', 'browser-sync'], function() {
     watch('./src/scss/**/*', function() {
         gulp.start('css');
     });
 
-    watch('./src/js/vendor/*.js', function() {
+    watch('./src/sjs/vendor/*.js', function() {
         gulp.start('vendor-js');
     });
 
-    watch('./src/js/modules/*.js', function() {
+    watch('./src/sjs/modules/*.js', function() {
         gulp.start('js');
     });
 
@@ -139,6 +142,7 @@ gulp.task('build', ['clean', 'css', 'js', 'vendor-js', 'img'], function() {
             .pipe(gulp.dest('./dist/css')),
 
         js = gulp.src('./src/js/*.js')
+            .pipe(wrap('(function(){ %= body % })();'))
             .pipe(uglify())
             .pipe(gulp.dest('./dist/js')),
 
