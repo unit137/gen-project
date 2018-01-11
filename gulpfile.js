@@ -110,7 +110,7 @@ gulp.task('watch', ['css', 'js', 'vendor-js', 'browser-sync'], function() {
         gulp.start('vendor-js');
     });
 
-    watch('./src/sjs/modules/*.js', function() {
+    watch(['./src/sjs/modules/*.js', './src/sjs/init.js'], function() {
         gulp.start('js');
     });
 
