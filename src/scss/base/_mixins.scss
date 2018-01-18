@@ -20,6 +20,17 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+@mixin custom-select() {
+  -moz-appearance: none;
+  -webkit-appearance: textfield;
+  box-shadow: none;
+  cursor: pointer;
+
+  &::-ms-expand {
+    display: none;
+  }
+}
+
 @mixin wide-desktop-min {
   @media (min-width: #{$wide-desktop-min}) {
     @content;
