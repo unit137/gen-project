@@ -15,6 +15,12 @@
   border-radius: 50%;
 }
 
+@mixin fixed-height($height) {
+  max-height: $height;
+  min-height: $height;
+  height: $height;
+}
+
 @mixin fixed-width($width) {
   max-width: $width;
   min-width: $width;
