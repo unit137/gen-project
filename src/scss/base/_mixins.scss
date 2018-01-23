@@ -15,6 +15,12 @@
   border-radius: 50%;
 }
 
+@mixin fixed-width($width) {
+  max-width: $width;
+  min-width: $width;
+  width: $width;
+}
+
 @mixin font-fix() {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
