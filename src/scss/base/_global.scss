@@ -90,12 +90,15 @@ button:focus, input:focus {
 }
 
 select {
+  border: 0;
+  box-shadow: none;
+  color: inherit;
   outline: none;
   overflow: hidden;
 
   &::-ms-value {
     background: none;
-    color: $text-base;
+    color: inherit;
   }
 }
 
