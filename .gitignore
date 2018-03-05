@@ -6,3 +6,6 @@
 /**/._*
 /**/.DS_Store
 /**/dist/
+/**/src/html/
+/**/src/css/
+/**/src/js/
