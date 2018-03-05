@@ -10,12 +10,12 @@
         tabs.init();
 	});
 
-	$(window).on('resize', function () {
-		if ($(window).width() !== global.windowWidth) {
-			global.windowWidth = $(window).width();
+    $(window).on('resize', $.debounce(100, function () {
+        if ($(window).width() !== global.windowWidth) {
+            global.windowWidth = $(window).width();
 
-		}
-	});
+        }
+    }));
 
 	$(window).on('load', function () {
 
