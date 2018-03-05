@@ -14,13 +14,13 @@ var accordions = (function($) {
 
     return {
         init: function () {
-            $(document).on('click', '.js-accordion', function () {
-                if ($(this).parent().hasClass('accordion_opened')) {
-                    $(this).parent().find('.accordion__content').slideUp(200);
-                } else {
-                    $(this).parent().find('.accordion__content').slideDown(200);
-                }
-                $(this).parent().toggleClass('accordion_opened');
+            $(document).on('click', '.js-accordion-trigger', function () {
+                var self = $(this),
+                    container = self.parents('.js-accordion:first'),
+                    content = container.find('.js-accordion-content:first');
+
+                container.toggleClass('_active');
+                content.slideToggle(container.data('duration') || 200);
             });
         }
     }
@@ -137,16 +137,16 @@ var tabs = (function($) {
 
     return {
         init: function () {
-            $(document).on('change', '.js-radiotab-control', function () {
-                var tabControl = $(this),
-                    tabsGroup = tabControl.attr('name'),
-                    tabsContainer = $('[data-tabs="' + tabsGroup + '"]'),
-                    tabToShow = tabControl.val();
+            $(document).on('change', '.js-radiotabs-control', function () {
+                var self = $(this),
+                    container = self.parents('.js-radiotabs'),
+                    group = self.attr('name'),
+                    content = container.find('[data-tabs="' + group + '"]'),
+                    tabs = content.find('.js-radiotabs-item'),
+                    tabToShow = self.val();
 
-                tabsContainer.find('.js-tab-item').each(function () {
-                    $(this).removeClass('_active')
-                });
-                tabsContainer.find('.js-tab-item[data-tab="' + tabToShow + '"]').addClass('_active');
+                tabs.removeClass('_active');
+                tabs.eq(tabToShow).addClass('_active');
             });
         }
     }
@@ -165,12 +165,12 @@ var tabs = (function($) {
         tabs.init();
 	});
 
-	$(window).on('resize', function () {
-		if ($(window).width() !== global.windowWidth) {
-			global.windowWidth = $(window).width();
+    $(window).on('resize', $.debounce(100, function () {
+        if ($(window).width() !== global.windowWidth) {
+            global.windowWidth = $(window).width();
 
-		}
-	});
+        }
+    }));
 
 	$(window).on('load', function () {
 

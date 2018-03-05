@@ -22,13 +22,25 @@
 	<link rel="stylesheet" href="../css/default.css?rev=hash">
 </head>
 <body>
-<header class="header"></header>
-<main class="main ">
-<div>some content</div>
+{% include "modules/header.html" %}
+<main class="main {{ bgClass }}">
+	{% block content %} {% endblock %}
+	{% if asidedPage %}
+	<section class="section-side">
+		<div class="section-side__container _g-outer-width _g-inner-padding">
+			<div class="section-side__content">
+				<aside class="section-side__menu">
+					{% block aside %} {% endblock %}
+				</aside>
+				<section class="section-side__contents">
+					{% block contentside %} {% endblock %}
+				</section>
+			</div>
+		</div>
+	</section>
+	{% endif %}
 </main>
-<footer class="footer"></footer>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYbiNiwAlTRs-42vZ1R0X6VEbG7uu4ys4" async defer>
-</script>
+{% include "modules/footer.html" %}
 <script src="../js/vendor.js?rev=hash"></script>
 <script src="../js/default.js?rev=hash"></script>
 </body>

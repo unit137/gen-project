@@ -13,16 +13,39 @@ var gulp = require('gulp'),
     pngquant = require('imagemin-pngquant'),
     plumber = require('gulp-plumber'),
     watch = require('gulp-watch'),
-    wrap = require("gulp-wrap-js");
+    wrap = require("gulp-wrap-js"),
+    nunjucksRender = require('gulp-nunjucks-render'),
+    rev = require('gulp-rev-append');
 
 gulp.task('browser-sync', function() {
     browserSync.init({
         server: {
             baseDir: './src'
         },
+        socket: {
+            domain: 'http://localhost:3000'
+        },
         open: false,
         notify: false
     });
+});
+
+gulp.task('html', function(){
+    return gulp.src(['./src/templates/*.html', '!./src/templates/page-example.html'])
+        .pipe(plumber({
+            errorHandler: function (error) {
+                console.log(error);
+                this.emit('end');
+            }
+        }))
+        .pipe(nunjucksRender({
+            path: ['src/templates'],
+            envOptions: {
+                trimBlocks: true,
+                lstripBlocks: true
+            }
+        }))
+        .pipe(gulp.dest('./src/html'));
 });
 
 gulp.task('css', function(){
@@ -101,7 +124,8 @@ gulp.task('clear-cache', function () {
     return cache.clearAll();
 });
 
-gulp.task('watch', ['css', 'js', 'vendor-js', 'browser-sync'], function() {
+gulp.task('watch', ['html', 'css', 'js', 'vendor-js', 'browser-sync'], function() {
+
     watch('./src/scss/**/*', function() {
         gulp.start('css');
     });
@@ -118,12 +142,14 @@ gulp.task('watch', ['css', 'js', 'vendor-js', 'browser-sync'], function() {
         browserSync.reload();
     });
 
-    watch('./src/**/*.html', function() {
-        browserSync.reload();
+    watch('./src/templates/**/*.html', function() {
+        gulp.start('html', function () {
+            browserSync.reload();
+        });
     });
 });
 
-gulp.task('build', ['clean', 'css', 'js', 'vendor-js', 'img'], function() {
+gulp.task('build', ['clean', 'html', 'css', 'js', 'vendor-js', 'img'], function() {
     var css = gulp.src('./src/css/*.css')
             .pipe(autoprefixer({
                 browsers: ['last 10 versions'],
@@ -149,10 +175,11 @@ gulp.task('build', ['clean', 'css', 'js', 'vendor-js', 'img'], function() {
         fonts = gulp.src(['./src/fonts/**/*', '!./src/fonts/selection.json'])
             .pipe(gulp.dest('./dist/fonts')),
 
-        favicon = gulp.src('./src/html/*.ico')
+        favicon = gulp.src('./src/*.ico')
             .pipe(gulp.dest('./dist')),
 
         html = gulp.src('./src/html/*.html')
+            .pipe(rev())
             .pipe(gulp.dest('./dist/html'));
 
     return [css, js, fonts, favicon, html]
