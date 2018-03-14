@@ -10,7 +10,7 @@
         tabs.init();
 	});
 
-    $(window).on('resize', $.debounce(100, function () {
+    $(window).on('resize', $.throttle(200, function () {
         if ($(window).width() !== global.windowWidth) {
             global.windowWidth = $(window).width();
 
