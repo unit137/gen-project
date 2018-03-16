@@ -111,7 +111,11 @@ gulp.task('img', function() {
             imagemin.gifsicle({interlaced: true}),
             jpegrecompress({quality: 'high', min: 80}),
             pngquant(),
-            imagemin.svgo()
+            imagemin.svgo({
+                plugins: [
+                    {removeViewBox: false}
+                ]
+            })
         ], {verbose: true})))
         .pipe(gulp.dest('./dist/i'));
 });
