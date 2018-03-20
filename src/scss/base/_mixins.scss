@@ -44,55 +44,55 @@
 }
 
 @mixin wide-desktop-min {
-  @media (min-width: #{$wide-desktop-min}) {
+  @media screen and (min-width: #{$wide-desktop-min}) {
     @content;
   }
 }
 
 @mixin desktop-min {
-  @media (min-width: #{$desktop-width}) {
+  @media screen and (min-width: #{$desktop-width}) {
     @content;
   }
 }
 
 @mixin low-desktop {
-  @media (max-width: #{$desktop-width - 1px}) {
+  @media screen and (max-width: #{$desktop-width - 1px}) {
     @content;
   }
 }
 
 @mixin low-desktop-only {
-  @media (min-width: #{$low-desktop-width}) and (max-width: #{$desktop-width - 1px}) {
+  @media screen and (min-width: #{$low-desktop-width}) and (max-width: #{$desktop-width - 1px}) {
     @content;
   }
 }
 
 @mixin low-desktop-min {
-  @media (min-width: #{$low-desktop-width}) {
+  @media screen and (min-width: #{$low-desktop-width}) {
     @content;
   }
 }
 
 @mixin tablet {
-  @media (max-width: #{$low-desktop-width - 1px}) {
+  @media screen and (max-width: #{$low-desktop-width - 1px}) {
     @content;
   }
 }
 
 @mixin tablet-only {
-  @media (min-width: #{$tablet-width}) and (max-width: #{$low-desktop-width - 1px}) {
+  @media screen and (min-width: #{$tablet-width}) and (max-width: #{$low-desktop-width - 1px}) {
     @content;
   }
 }
 
 @mixin tablet-min {
-  @media (min-width: #{$tablet-width}) {
+  @media screen and (min-width: #{$tablet-width}) {
     @content;
   }
 }
 
 @mixin mobile {
-  @media (max-width: #{$tablet-width - 1}) {
+  @media screen and (max-width: #{$tablet-width - 1}) {
     @content;
   }
 }
