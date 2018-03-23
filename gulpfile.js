@@ -67,7 +67,8 @@ gulp.task('html', function(){
             path: ['src/templates'],
             envOptions: {
                 trimBlocks: true,
-                lstripBlocks: true
+                lstripBlocks: true,
+                autoescape: false
             }
         }))
         .pipe(gulp.dest('./src/html'));
