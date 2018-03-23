@@ -2,4 +2,7 @@
 
 {% block content %}
 <div>some content</div>
+{% for item in example %}
+<p>{{ item.text }}</p>
+{% endfor %}
 {% endblock %}

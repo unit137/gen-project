@@ -15,7 +15,10 @@ var gulp = require('gulp'),
     watch = require('gulp-watch'),
     wrap = require("gulp-wrap-js"),
     nunjucksRender = require('gulp-nunjucks-render'),
-    rev = require('gulp-rev-append');
+    rev = require('gulp-rev-append'),
+    data = require('gulp-data'),
+    fs = require('fs'),
+    jsonMerge = require('gulp-merge-json');
 
 gulp.task('browser-sync', function() {
     browserSync.init({
@@ -30,12 +33,34 @@ gulp.task('browser-sync', function() {
     });
 });
 
+gulp.task('data', function(){
+    return gulp.src('./src/sdata/**/*.json')
+        .pipe(plumber({
+            errorHandler: function (error) {
+                console.log(error);
+                this.emit('end');
+            }
+        }))
+        .pipe(jsonMerge({
+            fileName: 'data.json'
+        }))
+        .pipe(gulp.dest('./src/data'));
+});
+
 gulp.task('html', function(){
     return gulp.src(['./src/templates/*.html', '!./src/templates/page-example.html'])
         .pipe(plumber({
             errorHandler: function (error) {
                 console.log(error);
                 this.emit('end');
+            }
+        }))
+        .pipe(data(function() {
+            try {
+                return JSON.parse(fs.readFileSync('./src/data/data.json'));
+            } catch (err) {
+                console.log(err);
+                return false;
             }
         }))
         .pipe(nunjucksRender({
@@ -46,6 +71,10 @@ gulp.task('html', function(){
             }
         }))
         .pipe(gulp.dest('./src/html'));
+});
+
+gulp.task('data-html', ['data'], function(){
+    gulp.start('html');
 });
 
 gulp.task('css', function(){
@@ -128,9 +157,9 @@ gulp.task('clear-cache', function () {
     return cache.clearAll();
 });
 
-gulp.task('watch', ['html', 'css', 'js', 'vendor-js', 'browser-sync'], function() {
+gulp.task('watch', ['data-html', 'css', 'js', 'vendor-js', 'browser-sync'], function() {
 
-    watch('./src/scss/**/*', function() {
+    watch('./src/scss/**/*.scss', function() {
         gulp.start('css');
     });
 
@@ -146,14 +175,18 @@ gulp.task('watch', ['html', 'css', 'js', 'vendor-js', 'browser-sync'], function(
         browserSync.reload();
     });
 
-    watch('./src/templates/**/*.html', function() {
+    watch('./src/sdata/**/*.json', function() {
+        gulp.start('data');
+    });
+
+    watch(['./src/templates/**/*.html', './src/data/*.json'], function() {
         gulp.start('html', function () {
             browserSync.reload();
         });
     });
 });
 
-gulp.task('build', ['clean', 'html', 'css', 'js', 'vendor-js', 'img'], function() {
+gulp.task('build', ['clean', 'data-html', 'css', 'js', 'vendor-js', 'img'], function() {
     var css = gulp.src('./src/css/*.css')
             .pipe(autoprefixer({
                 browsers: ['last 10 versions'],
