@@ -27,11 +27,6 @@
   width: $width;
 }
 
-@mixin font-fix() {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
 @mixin custom-select() {
   -moz-appearance: none;
   -webkit-appearance: textfield;
@@ -44,7 +39,7 @@
 }
 
 @mixin wide-desktop-min {
-  @media screen and (min-width: #{$wide-desktop-min}) {
+  @media screen and (min-width: #{$wide-desktop-width}) {
     @content;
   }
 }
