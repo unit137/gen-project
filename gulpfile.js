@@ -151,7 +151,7 @@ gulp.task('img', function() {
 });
 
 gulp.task('clean', function() {
-    return del.sync('./dist');
+    return del.sync(['./dist', './src/html']);
 });
 
 gulp.task('clear-cache', function () {
