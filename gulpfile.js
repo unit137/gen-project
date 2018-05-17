@@ -160,7 +160,7 @@ gulp.task('clear-cache', function () {
 
 gulp.task('watch', ['data-html', 'css', 'js', 'vendor-js', 'browser-sync'], function() {
 
-    watch('./src/scss/**/*.scss', function() {
+    watch('./src/scss', function() {
         gulp.start('css');
     });
 
@@ -180,10 +180,12 @@ gulp.task('watch', ['data-html', 'css', 'js', 'vendor-js', 'browser-sync'], func
         gulp.start('data');
     });
 
-    watch(['./src/templates/**/*.html', './src/data/*.json'], function() {
-        gulp.start('html', function () {
-            browserSync.reload();
-        });
+    watch(['./src/templates/**/*.html', './src/data/*.json'], function () {
+        gulp.start('html');
+    });
+
+    watch('./src/html/**/*.html', function() {
+        browserSync.reload();
     });
 });
 
