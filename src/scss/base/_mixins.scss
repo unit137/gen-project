@@ -147,3 +147,19 @@
     }
   }
 }
+
+@mixin clickable() {
+  cursor: pointer;
+  user-select: none;
+}
+
+@mixin bg-cover() {
+  background-size: cover;
+  background-position: center;
+}
+
+@mixin responsive-svg() {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
