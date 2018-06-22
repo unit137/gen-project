@@ -1,5 +1,7 @@
 {
-  "name": "generic-project",
+  "name": "gen-project",
+  "version": "1.0.0",
+  "description": " ",
   "author": "Vladislav Spirin",
   "homepage": "https://github.com/unit137/gen-project",
   "repository": {
