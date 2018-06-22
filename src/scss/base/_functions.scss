@@ -9,3 +9,11 @@
   }
   @return $pixels / $context * 1rem;
 }
+
+@function percent-w($px, $max-px) {
+  @return ($px * 100%) / $max-px
+}
+
+@function relative-lh($fz, $lh) {
+  @return $lh / $fz;
+}

@@ -182,3 +182,12 @@
          url('#{$file-path}.svg##{$font-family}') format('svg');
   }
 }
+
+@mixin aspect-ratio($width, $height: $width) {
+
+  &::after {
+    content: '';
+    display: block;
+    padding-top: 1 / ($width / $height) * 100%;
+  }
+}
