@@ -132,7 +132,7 @@ gulp.task('vendor-js', function() {
 });
 
 gulp.task('img', function() {
-    return gulp.src('./src/i/**/*')
+    return gulp.src('./src/img/**/*')
         .pipe(plumber({
             errorHandler: function (error) {
                 console.log(error);
@@ -149,7 +149,7 @@ gulp.task('img', function() {
                 ]
             })
         ], {verbose: true})))
-        .pipe(gulp.dest('./dist/i'));
+        .pipe(gulp.dest('./dist/img'));
 });
 
 gulp.task('clean', function() {
