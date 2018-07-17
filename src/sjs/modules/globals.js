@@ -1,6 +1,6 @@
 'use strict';
 
-var global = (function($) {
+var globals = (function($) {
 
     return {
         windowWidth: $(window).width()

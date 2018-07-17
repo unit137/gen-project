@@ -11,8 +11,8 @@
 	});
 
     $(window).on('resize', $.throttle(200, function () {
-        if ($(window).width() !== global.windowWidth) {
-            global.windowWidth = $(window).width();
+        if ($(window).width() !== globals.windowWidth) {
+            globals.windowWidth = $(window).width();
 
         }
     }));
