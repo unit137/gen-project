@@ -71,6 +71,17 @@ button {
   display: block;
 }
 
+input {
+
+  &::-ms-reveal {
+    display: none;
+  }
+
+  &::-ms-clear {
+    display: none;
+  }
+}
+
 textarea {
   outline: none;
   resize: none;
