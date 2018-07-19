@@ -100,10 +100,15 @@ select {
   color: inherit;
   outline: none;
   overflow: hidden;
+  appearance: none;
 
   &::-ms-value {
     background: none;
     color: inherit;
+  }
+
+  &::-ms-expand {
+    display: none;
   }
 }
 
