@@ -10,12 +10,13 @@
         tabs.init();
 	});
 
-    $(window).on('resize', $.throttle(200, function () {
+    function onResize() {
         if ($(window).width() !== globals.windowWidth) {
             globals.windowWidth = $(window).width();
-
         }
-    }));
+    }
+
+    $(window).on('resize', $.throttle(200, onResize));
 
 	$(window).on('load', function () {
 
