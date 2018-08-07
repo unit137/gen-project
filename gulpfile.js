@@ -99,7 +99,7 @@ gulp.task('css', function(){
 gulp.task('js', function() {
     return gulp.src([
         './src/sjs/modules/global.js',
-        './src/sjs/modules/*.js',
+        './src/sjs/modules/**/*.js',
         './src/sjs/init.js'
     ])
         .pipe(plumber({
@@ -166,27 +166,27 @@ gulp.task('watch', ['data-html', 'css', 'js', 'vendor-js', 'browser-sync'], func
         gulp.start('css');
     });
 
-    watch('./src/sjs/vendor/*.js', function() {
+    watch('./src/sjs/vendor', function() {
         gulp.start('vendor-js');
     });
 
-    watch(['./src/sjs/modules/*.js', './src/sjs/init.js'], function() {
+    watch(['./src/sjs/modules', './src/sjs/init.js'], function() {
         gulp.start('js');
     });
 
-    watch('./src/js/*.js', function() {
+    watch('./src/js', function() {
         browserSync.reload();
     });
 
-    watch('./src/sdata/**/*.json', function() {
+    watch('./src/sdata', function() {
         gulp.start('data');
     });
 
-    watch(['./src/templates/**/*.html', './src/data/*.json'], function () {
+    watch(['./src/templates', './src/data'], function () {
         gulp.start('html');
     });
 
-    watch('./src/html/**/*.html', function() {
+    watch('./src/html', function() {
         browserSync.reload();
     });
 });
@@ -209,8 +209,12 @@ gulp.task('build', ['clean', 'data-html', 'css', 'js', 'vendor-js', 'img'], func
             }))
             .pipe(gulp.dest('./dist/css')),
 
-        js = gulp.src('./src/js/*.js')
+        js = gulp.src('./src/js/default.js')
             .pipe(wrap('(function(){ %= body % })();'))
+            .pipe(uglify())
+            .pipe(gulp.dest('./dist/js')),
+
+        vendorJs = gulp.src('./src/js/vendor.js')
             .pipe(uglify())
             .pipe(gulp.dest('./dist/js')),
 
@@ -224,7 +228,7 @@ gulp.task('build', ['clean', 'data-html', 'css', 'js', 'vendor-js', 'img'], func
             .pipe(rev())
             .pipe(gulp.dest('./dist/html'));
 
-    return [css, js, fonts, favicon, html]
+    return [css, js, vendorJs, fonts, favicon, html]
 });
 
 gulp.task('default', ['watch']);
