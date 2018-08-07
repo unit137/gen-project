@@ -213,3 +213,9 @@
   @include full-pos($coord);
   position: fixed;
 }
+
+@mixin flex-center() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
