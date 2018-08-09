@@ -193,19 +193,20 @@ gulp.task('watch', ['data-html', 'css', 'js', 'vendor-js', 'browser-sync'], func
 
 gulp.task('build', ['clean', 'data-html', 'css', 'js', 'vendor-js', 'img'], function() {
     var css = gulp.src('./src/css/*.css')
-            .pipe(autoprefixer({
-                browsers: ['last 10 versions'],
-                cascade: false
-            }))
             .pipe(cleanCss({
                 level: {
                     1: {
                         specialComments: 0
                     },
                     2: {
-                        mergeIntoShorthands: false
+                        mergeIntoShorthands: false,
+                        skipProperties: ['animation']
                     }
                 }
+            }))
+            .pipe(autoprefixer({
+                browsers: ['last 10 versions'],
+                cascade: false
             }))
             .pipe(gulp.dest('./dist/css')),
 
