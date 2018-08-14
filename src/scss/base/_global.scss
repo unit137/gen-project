@@ -37,25 +37,25 @@
 
 ._g-visible-tablet {
   @include low-desktop-min {
-    display: none;
+    display: none !important;
   }
 }
 
 ._g-visible-mobile {
   @include tablet-min {
-    display: none;
+    display: none !important;
   }
 }
 
 ._g-hidden-tablet {
   @include tablet {
-    display: none;
+    display: none !important;
   }
 }
 
 ._g-hidden-mobile {
   @include mobile {
-    display: none;
+    display: none !important;
   }
 }
 
