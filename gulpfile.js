@@ -22,7 +22,7 @@ var gulp = require('gulp'),
     fs = require('fs'),
     jsonMerge = require('gulp-merge-json');
 
-gulp.task('browser-sync', function() {
+gulp.task('browser-sync', function () {
     browserSync.init({
         server: {
             baseDir: './src'
@@ -35,7 +35,7 @@ gulp.task('browser-sync', function() {
     });
 });
 
-gulp.task('data', function(){
+gulp.task('data', function () {
     return gulp.src('./src/sdata/**/*.json')
         .pipe(plumber({
             errorHandler: function (error) {
@@ -49,7 +49,7 @@ gulp.task('data', function(){
         .pipe(gulp.dest('./src/data'));
 });
 
-gulp.task('html', function(){
+gulp.task('html', function () {
     return gulp.src(['./src/templates/*.html', '!./src/templates/page-example.html'])
         .pipe(plumber({
             errorHandler: function (error) {
@@ -57,7 +57,7 @@ gulp.task('html', function(){
                 this.emit('end');
             }
         }))
-        .pipe(data(function() {
+        .pipe(data(function () {
             try {
                 return JSON.parse(fs.readFileSync('./src/data/data.json'));
             } catch (err) {
@@ -76,11 +76,11 @@ gulp.task('html', function(){
         .pipe(gulp.dest('./src/html'));
 });
 
-gulp.task('data-html', ['data'], function(){
+gulp.task('data-html', ['data'], function () {
     gulp.start('html');
 });
 
-gulp.task('css', function(){
+gulp.task('css', function () {
     return gulp.src('./src/scss/**/*.scss')
         .pipe(plumber({
             errorHandler: function (error) {
@@ -96,7 +96,7 @@ gulp.task('css', function(){
         .pipe(browserSync.stream());
 });
 
-gulp.task('js', function() {
+gulp.task('js', function () {
     return gulp.src([
         './src/sjs/modules/global.js',
         './src/sjs/modules/**/*.js',
@@ -114,10 +114,10 @@ gulp.task('js', function() {
         .pipe(gulp.dest('./src/js'));
 });
 
-gulp.task('vendor-js', function() {
+gulp.task('vendor-js', function () {
     return gulp.src([
         './src/sjs/vendor/jquery-3.2.1.min.js',
-        './src/sjs/vendor/*.js'
+        './src/sjs/vendor/**/*.js'
     ])
         .pipe(plumber({
             errorHandler: function (error) {
@@ -131,7 +131,7 @@ gulp.task('vendor-js', function() {
         .pipe(gulp.dest('./src/js'));
 });
 
-gulp.task('img', function() {
+gulp.task('img', function () {
     return gulp.src('./src/img/**/*')
         .pipe(plumber({
             errorHandler: function (error) {
@@ -152,7 +152,7 @@ gulp.task('img', function() {
         .pipe(gulp.dest('./dist/img'));
 });
 
-gulp.task('clean', function() {
+gulp.task('clean', function () {
     return del.sync(['./dist', './src/html']);
 });
 
@@ -160,25 +160,25 @@ gulp.task('clear-cache', function () {
     return cache.clearAll();
 });
 
-gulp.task('watch', ['data-html', 'css', 'js', 'vendor-js', 'browser-sync'], function() {
+gulp.task('watch', ['data-html', 'css', 'js', 'vendor-js', 'browser-sync'], function () {
 
-    watch('./src/scss', function() {
+    watch('./src/scss', function () {
         gulp.start('css');
     });
 
-    watch('./src/sjs/vendor', function() {
+    watch('./src/sjs/vendor', function () {
         gulp.start('vendor-js');
     });
 
-    watch(['./src/sjs/modules', './src/sjs/init.js'], function() {
+    watch(['./src/sjs/modules', './src/sjs/init.js'], function () {
         gulp.start('js');
     });
 
-    watch('./src/js', function() {
+    watch('./src/js', function () {
         browserSync.reload();
     });
 
-    watch('./src/sdata', function() {
+    watch('./src/sdata', function () {
         gulp.start('data');
     });
 
@@ -186,12 +186,12 @@ gulp.task('watch', ['data-html', 'css', 'js', 'vendor-js', 'browser-sync'], func
         gulp.start('html');
     });
 
-    watch('./src/html', function() {
+    watch('./src/html', function () {
         browserSync.reload();
     });
 });
 
-gulp.task('build', ['clean', 'data-html', 'css', 'js', 'vendor-js', 'img'], function() {
+gulp.task('build', ['clean', 'data-html', 'css', 'js', 'vendor-js', 'img'], function () {
     var css = gulp.src('./src/css/*.css')
             .pipe(cleanCss({
                 level: {
