@@ -148,25 +148,3 @@ a, area, button, input, label, select, summary, textarea, [tabindex] {
   -ms-touch-action: manipulation;
   touch-action: manipulation;
 }
-
-body {
-  background: $bg-main;
-  color: $text-base;
-  font-family: $font-base;
-  font-size: $font-size;
-  font-weight: normal;
-  height: 100%;
-  line-height: $line-height;
-  position: relative;
-  text-rendering: geometricPrecision;
-}
-
-::selection {
-  background: rgba($accent-base, .3);
-  text-shadow: none;
-}
-
-::-moz-selection {
-  background: rgba($accent-base, .3);
-  text-shadow: none;
-}
