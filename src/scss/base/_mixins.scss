@@ -219,3 +219,8 @@
   align-items: center;
   justify-content: center;
 }
+
+@mixin no-break-li() {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
