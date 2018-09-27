@@ -58,6 +58,7 @@ table {
 
 label {
   display: block;
+  user-select: none;
   -webkit-tap-highlight-color: rgba($black-true, 0);
 }
 
