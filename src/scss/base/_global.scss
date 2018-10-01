@@ -57,6 +57,12 @@ body {
   z-index: -1;
 }
 
+._g-visible-low-desktop {
+  @include desktop-min {
+    display: none !important;
+  }
+}
+
 ._g-visible-tablet {
   @include low-desktop-min {
     display: none !important;
@@ -65,6 +71,12 @@ body {
 
 ._g-visible-mobile {
   @include tablet-min {
+    display: none !important;
+  }
+}
+
+._g-hidden-low-desktop {
+  @include low-desktop {
     display: none !important;
   }
 }
