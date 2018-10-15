@@ -114,6 +114,7 @@ select {
   outline: none;
   overflow: hidden;
   appearance: none;
+  border-radius: 0;
 
   &::-ms-value {
     background: none;
