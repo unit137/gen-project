@@ -224,3 +224,19 @@
   break-inside: avoid;
   page-break-inside: avoid;
 }
+
+@mixin spinner($size, $width, $color) {
+  @include round($size);
+  content: '';
+  display: block;
+  position: absolute;
+  pointer-events: none;
+  animation: spin .7s linear infinite;
+  top: 50%;
+  left: 50%;
+  margin: (-($size / 2)) 0 0 (-($size / 2));
+  border: $width solid transparent;
+  border-bottom-color: $color;
+  border-left-color: $color;
+  z-index: 1;
+}
