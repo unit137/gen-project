@@ -220,6 +220,12 @@
   justify-content: center;
 }
 
+@mixin flex-center-inline() {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
 @mixin no-break-li() {
   break-inside: avoid;
   page-break-inside: avoid;
