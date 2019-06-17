@@ -92,19 +92,28 @@
   }
 }
 
-@mixin IE {
+@mixin ie {
   @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
     @content;
   }
 }
 
-@mixin Edge {
+@mixin edge {
   @supports (-ms-ime-align:auto) {
     @content;
   }
 }
 
-@mixin Safari {
+@mixin ie-edge {
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    @content;
+  }
+  @supports (-ms-ime-align:auto) {
+    @content;
+  }
+}
+
+@mixin safari {
   @media not all and (min-resolution: .001dpcm) {
     @content;
   }
