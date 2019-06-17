@@ -92,6 +92,24 @@
   }
 }
 
+@mixin IE {
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    @content;
+  }
+}
+
+@mixin Edge {
+  @supports (-ms-ime-align:auto) {
+    @content;
+  }
+}
+
+@mixin Safari {
+  @media not all and (min-resolution: .001dpcm) {
+    @content;
+  }
+}
+
 @mixin size($value) {
   $width: nth($value, 1);
   $height: $width;
