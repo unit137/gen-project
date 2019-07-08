@@ -1,14 +1,5 @@
 @import 'settings';
 
-@mixin placeholder {
-	::-webkit-input-placeholder {@content} //use inside input-container element as
-			::-ms-input-placeholder {@content} //@include placeholder {
-			 :-ms-input-placeholder {@content} //  color: $faded-base;
-					 ::-moz-placeholder {@content} //  font-weight: 300;
-						:-moz-placeholder {@content} //  opacity: 1;
-								::placeholder {@content} //}
-}
-
 @mixin round($size) {
   width: $size;
   height: $size;
@@ -88,6 +79,18 @@
 
 @mixin mobile {
   @media screen and (max-width: #{$tablet-width - 1}) {
+    @content;
+  }
+}
+
+@mixin portrait {
+  @media (orientation: portrait) {
+    @content;
+  }
+}
+
+@mixin landscape {
+  @media (orientation: landscape) {
     @content;
   }
 }
@@ -201,12 +204,8 @@
     font-family: $font-family;
     font-style: $style;
     font-weight: $weight;
-    src: url('#{$file-path}.eot');
-    src: url('#{$file-path}.eot?#iefix') format('embedded-opentype'),
-         url('#{$file-path}.woff2') format('woff2'),
-         url('#{$file-path}.woff') format('woff'),
-         url('#{$file-path}.ttf') format('truetype'),
-         url('#{$file-path}.svg##{$font-family}') format('svg');
+    src: url('#{$file-path}.woff2') format('woff2'),
+         url('#{$file-path}.woff') format('woff');
   }
 }
 
@@ -218,11 +217,6 @@
     padding-top: 1 / ($width / $height) * 100%;
   }
 }
-
-@mixin lh($lh, $fz) {
-  line-height: $lh / $fz;
-}
-
 
 @mixin full-pos($coord) {
   top: $coord;

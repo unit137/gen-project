@@ -15,11 +15,6 @@ body {
   text-shadow: none;
 }
 
-::-moz-selection {
-  background: rgba($accent-base, .3);
-  text-shadow: none;
-}
-
 ._g-outer-width {
   margin-left: auto;
   margin-right: auto;
@@ -90,78 +85,5 @@ body {
 ._g-hidden-mobile {
   @include mobile {
     display: none !important;
-  }
-}
-
-._g-font-alt {
-  font-family: $font-alt;
-}
-
-._g-alt-bg {
-  background-color: $bg-alt;
-}
-
-._g-clearfix::after {
-  clear: both;
-  content: '';
-  display: table;
-}
-
-._g-valign-inline {
-  font-size: 0;
-
-  &::after {
-    content: '';
-    display: inline-block;
-    height: 100%;
-    vertical-align: middle;
-    width: 0;
-  }
-}
-
-._g-link-ex {
-  border-bottom: 1px solid $link-base;
-  color: $link-base;
-  cursor: pointer;
-}
-
-._g-link-anchor {
-  border-bottom: 1px dashed $link-base;
-  color: $link-base;
-  cursor: pointer;
-}
-
-._g-link-noul {
-  color: $link-base;
-  cursor: pointer;
-}
-
-._g-iframe {
-
-  @include mobile {
-    height: 0;
-    position: relative;
-
-    iframe {
-      height: 100%;
-      left: 0;
-      position: absolute;
-      top: 0;
-      width: 100%;
-    }
-  }
-
-  &._g-iframe_16x9 {
-
-    @include mobile {
-      padding-bottom: 56.25%;
-    }
-  }
-
-  &._g-iframe_4x3 {
-
-    @include mobile {
-      padding-bottom: 75%;
-    }
   }
 }
